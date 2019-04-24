@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import HomeScreen from './screens/HomeScreen';
-import  RegisterScreen from './screens/RegisterScreen';
-import  LoginScreen from './screens/LoginScreen';
-import  AnnouncementScreen from './screens/AnnouncementScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import LoginScreen from './screens/LoginScreen';
+import AnnouncementScreen from './screens/AnnouncementScreen';
+import Sidebar from './components/screenComponents/sidebar/Sidebar'
 
 import './App.css';
 
 class ShopApp extends Component {
   state = {
-    userName: 'AdamS',
+    userName: '',
     userId: '',
-    findItem: '',
+    currentCategory: 'wszystkie',
 
   }
   menuUser(){
@@ -30,6 +31,13 @@ class ShopApp extends Component {
     }
     
   }
+  onGetCategory(category){
+    this.setState({currentCategory: category});
+    
+  }
+  componentDidUpdate(){
+    console.log(this.state.currentCategory);
+  }
   render(){
 
     return(
@@ -45,10 +53,16 @@ class ShopApp extends Component {
               {this.menuUser()}
             </div>
           </header>
-          <main>
-            <HomeScreen/>
-          </main>
+
         </div>
+        <main>
+            <div className="sidebar">
+              <Sidebar getCategory={this.onGetCategory.bind(this)}/>
+            </div>
+            <div className="content">
+              <HomeScreen/>
+            </div>
+          </main>
       </div>
     );
   }
