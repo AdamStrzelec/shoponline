@@ -1,0 +1,43 @@
+import React, { Component } from 'react';
+import logo from '../../../images/logo.PNG';
+import styled from 'styled-components';
+import SearchBar from './searchBar';
+import UserMenuBar from './userMenuBar';
+
+const Nav = styled.nav`
+    display: flex;
+    height: 100px;
+    align-items: center;
+    border: 1px solid red;
+    padding: 10px;
+`
+
+const Img = styled.img`
+    width: 300px;
+`
+
+const Search = styled.div`
+    width: 50%;
+`
+const User = styled.div`
+    width: 30%;
+`
+
+export default class TopBar extends Component {
+
+    onGetSearchInfo(searchInfo){
+        this.props.getSearchInfo(searchInfo);
+    }
+
+    render(){
+        return(
+            <div>
+                <Nav>
+                    <Img src={logo} alt="logo"/>
+                    <Search><SearchBar getProductInfo={this.onGetSearchInfo.bind(this)}/></Search>
+                    <User><UserMenuBar userName={this.props.userName}/></User>
+                </Nav>
+            </div>
+        );
+    }
+}

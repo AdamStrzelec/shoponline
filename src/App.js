@@ -4,15 +4,16 @@ import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import AnnouncementScreen from './screens/AnnouncementScreen';
 import Sidebar from './components/screenComponents/sidebar/Sidebar'
+import Topbar from './components/screenComponents/topbar';
 
 import './App.css';
 
 class ShopApp extends Component {
   state = {
-    userName: '',
+    userName: 'Adam',
     userId: '',
     currentCategory: 'wszystkie',
-
+    searchInfo: '',
   }
   menuUser(){
     
@@ -35,26 +36,18 @@ class ShopApp extends Component {
     this.setState({currentCategory: category});
     
   }
+  onGetSearchInfo(searchInfo){
+    this.setState({searchInfo});
+  }
   componentDidUpdate(){
     console.log(this.state.currentCategory);
+    console.log(this.state.searchInfo);
   }
   render(){
 
     return(
       <div>
-        <div className="topbar">
-          <header>
-            <div className="logo"><h1>Logo</h1></div>
-            <div className="search">
-              <input type="text" />
-              <button>Szukaj</button>
-            </div>
-            <div className="menuUser">
-              {this.menuUser()}
-            </div>
-          </header>
-
-        </div>
+        <Topbar getSearchInfo={this.onGetSearchInfo.bind(this)} userName={this.state.userName}/>
         <main>
             <div className="sidebar">
               <Sidebar getCategory={this.onGetCategory.bind(this)}/>

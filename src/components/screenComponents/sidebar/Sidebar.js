@@ -12,11 +12,16 @@ import automotiveIcon from '../../../images/motoryzacja.PNG';
 
 const SideBar = styled.div`
     font-family: 'Lato', sans-serif;
+    
 `
 
 const Ul = styled.ul`
     list-style: none;
     padding-left: 10px;
+`
+const H2 = styled.h2`
+    padding-left: 30px;
+    width: 17px;
 `
 
 export default class Sidebar extends Component{
@@ -28,7 +33,7 @@ export default class Sidebar extends Component{
     render(){
         return(
             <SideBar>
-                <h2>Kategorie</h2>
+                <H2>Kategorie</H2>
                 <Ul>
                     <li><SidebarItem changeCategory={this.onChangeCategory.bind(this)} category='Wszystkie'/></li>
                     <li><SidebarItem changeCategory={this.onChangeCategory.bind(this)} imgSrc={electronicsIcon} category='Elektronika'/></li>
