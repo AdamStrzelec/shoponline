@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import ItemImage from './itemImage';
 import ItemHeader from './itemHeader';
 import ItemDescription from './itemDescription';
 import ItemPrice from './itemPrice';
+import ItemCategory from './itemCategory';
+import ItemSeller from './itemSeller';
 
 
 const Item = styled.div`
@@ -24,17 +27,34 @@ const ItemContent = styled.div`
     margin-left: 20px;
     text-align: left;
 `
+const StyledLink = styled(Link)`
+    text-decoratin: none;
+    color: black;
+    
+    &:hover{
+        text-decoration: none;
+    }
+`
 
-const AnnouncementItem = (props) => {
-    return (
-        <Item>
-            <ItemImg><ItemImage imgSrc={props.imgSrc}/></ItemImg>
-            <ItemContent>
-                <ItemHeader header={props.header}/>
-                <ItemDescription description={props.description}/>
-                <ItemPrice price={props.price}/>
-            </ItemContent>
-        </Item>
-    );
+
+class AnnouncementItem extends Component {
+    state = {id: this.props.id}
+    
+    render(){
+        const {id} = this.props;
+        return (
+            <StyledLink to={`/item/${id}`}><Item>
+                <ItemImg><ItemImage imgSrc={this.props.imgSrc}/></ItemImg>
+                <ItemContent>
+                <ItemHeader header={this.props.header}/>
+                    <ItemDescription description={this.props.description}/>
+                    <ItemPrice price={this.props.price}/>
+                    <ItemCategory category={this.props.category}/>
+                    <ItemSeller seller={this.props.seller}/>
+                </ItemContent>
+            </Item></StyledLink>
+            
+        );
+    }
 };
 export default AnnouncementItem;

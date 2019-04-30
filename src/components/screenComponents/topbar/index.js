@@ -3,6 +3,7 @@ import logo from '../../../images/logo.PNG';
 import styled from 'styled-components';
 import SearchBar from './searchBar';
 import UserMenuBar from './userMenuBar';
+import { Link } from 'react-router-dom';
 
 const Nav = styled.nav`
     display: flex;
@@ -33,7 +34,7 @@ export default class TopBar extends Component {
         return(
             <div>
                 <Nav>
-                    <Img src={logo} alt="logo"/>
+                    <Link to='/'><Img src={logo} alt="logo"/></Link>
                     <Search><SearchBar getProductInfo={this.onGetSearchInfo.bind(this)}/></Search>
                     <User><UserMenuBar userName={this.props.userName}/></User>
                 </Nav>
