@@ -26,16 +26,12 @@ const User = styled.div`
 
 export default class TopBar extends Component {
 
-    onGetSearchInfo(searchInfo){
-        this.props.getSearchInfo(searchInfo);
-    }
-
     render(){
         return(
             <div>
                 <Nav>
                     <Link to='/'><Img src={logo} alt="logo"/></Link>
-                    <Search><SearchBar getProductInfo={this.onGetSearchInfo.bind(this)}/></Search>
+                    <Search><SearchBar/></Search>
                     <User><UserMenuBar userName={this.props.userName}/></User>
                 </Nav>
             </div>

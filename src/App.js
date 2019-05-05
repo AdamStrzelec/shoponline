@@ -8,13 +8,14 @@ import Topbar from './components/screenComponents/topbar';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import './App.css';
+import AnnouncementItem from './components/announcementItem';
 
 class ShopApp extends Component {
   state = {
     userName: 'Adam',
     userId: '',
-    currentCategory: 'wszystkie',
     searchInfo: '',
+    currentCategory: ''
   }
   menuUser(){
     
@@ -40,10 +41,7 @@ class ShopApp extends Component {
   onGetSearchInfo(searchInfo){
     this.setState({searchInfo});
   }
-  componentDidUpdate(){
-    console.log(this.state.currentCategory);
-    console.log(this.state.searchInfo);
-  }
+
   display(){
     if(this.props.location.pathname==='/'){
       return(
@@ -64,8 +62,7 @@ class ShopApp extends Component {
               <Sidebar getCategory={this.onGetCategory.bind(this)}/>
             </div>
             <div className="content">
-              {this.props.location.pathname === '/' ? <HomeScreen/> 
-                : this.props.location.pathname.substr(0,9)==='/category' ? <HomeScreen cat={this.state.currentCategory}/> : <AnnouncementScreen/>}
+                <HomeScreen/>
             </div>
           </main>
       </div>
@@ -76,18 +73,14 @@ class ShopApp extends Component {
 function App() {
   return (
     <div>
-      {/* <Route exact path='/' component={ShopApp}/>
-      <Route exact path='/login' component={LoginScreen}/>
-      <Route exact path='/item' component={AnnouncementScreen}/> */}
       <div className="App">
-      {/* <Topbar getSearchInfo={this.onGetSearchInfo.bind(this)} userName={this.state.userName}/> */}
         <Router>
-          <Route exact path='/' component={ShopApp}/>
-          <Route path='/item/:itemId' component={ShopApp}/>
+          <Route exact path='/' component={ShopApp}/>        
           <Route path='/category/:categoryName' component={ShopApp}/>
+          <Route path='/find/:itemName' component={ShopApp}/>
+          <Route path='/item/:itemId' component={AnnouncementScreen}/>
           <Route path='/login' component={LoginScreen}/>
         </Router>
-        {/* <ShopApp /> */}
       </div>
     </div>
   );

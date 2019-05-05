@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Search = styled.div`
     border: 1px solid black;
@@ -32,7 +33,9 @@ export default class SearchBar extends Component{
                 <Form>
                     <input onChange={this.onChangeDraft} type="text" className="form-control" placeholder="Wyszukaj produkt"/>  
                 </Form>
-                <button onClick={this.onChangeSearch.bind(this)} className="btn btn-primary">Szukaj</button>
+                <Link to={this.state.draft.length>0 ? '/find/'+this.state.draft : '/'}>
+                    <button className="btn btn-primary">Szukaj</button>
+                </Link>
             </Search>
         );
     }

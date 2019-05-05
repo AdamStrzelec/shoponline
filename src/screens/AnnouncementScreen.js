@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TopBar from '../components/screenComponents/topbar';
 
 export default class AnnouncementScreen extends Component{
 
@@ -8,7 +9,9 @@ export default class AnnouncementScreen extends Component{
     render(){
         return(
             <div>
-                <h1>Announcement Screen</h1>
+                <TopBar/>
+                <h1>Announcement item</h1>
+                <p>{this.props.match.params.itemId}</p>
             </div>
         );
     }

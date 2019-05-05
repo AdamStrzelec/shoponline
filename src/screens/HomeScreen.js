@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter,  BrowserRouter as Router, Route } from 'react-router-dom';
 import AnnouncementItem from '../components/announcementItem';
+
 
 
 export default class HomeScreen extends Component{
@@ -47,11 +47,22 @@ export default class HomeScreen extends Component{
         ],
     }
 
+    findItems(){
+        if(window.location.pathname==='/'){
+          console.log('location: ' + window.location.pathname)
+        }else if(window.location.pathname.substr(0,9)==='/category'){
+          console.log('location: ' + window.location.pathname.substr(10))
+        }else if(window.location.pathname.substr(0,5)==='/find'){
+            console.log('location: ' + window.location.pathname.substr(6))
+        }
+    }
+
     componentDidMount(){
-        // {this.props.location.pathname === '/' ? this.setState({findCategory: 'Wszystkie'})
-        // : this.setState({findCategory: this.props.math.params.categoryName})}
-        console.log(this.props.cat);
-        console.log('/category/123'.substr(0,9))
+        this.findItems();
+
+    }
+    componentDidUpdate(){
+        this.findItems();
     }
 
     render(){
