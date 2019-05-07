@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const UserBar = styled.div`
     border: 1px solid black;
@@ -19,14 +20,14 @@ export default class UserMenuBar extends Component{
             return(
             <UserBar>
                 <P>Jesteś zalogowany jako:</P> 
-                <P>{this.props.userName}</P>   
+                <P className='dropdown-toggle'>{this.props.userName} </P>  
             </UserBar>
             );
         }else{
             return(
             <UserBar>
-                <Buttons><button className="btn btn-secondary">Zaloguj się</button></Buttons>
-                <Buttons><button className="btn btn-info">Utwórz konto</button></Buttons>     
+                <Link to='/login'><Buttons><button className="btn btn-secondary">Zaloguj się</button></Buttons></Link>
+                <Link to='/register'><Buttons><button className="btn btn-info">Utwórz konto</button></Buttons></Link>    
             </UserBar>
             );
         }

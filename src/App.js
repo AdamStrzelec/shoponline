@@ -8,7 +8,6 @@ import Topbar from './components/screenComponents/topbar';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import './App.css';
-import AnnouncementItem from './components/announcementItem';
 
 class ShopApp extends Component {
   state = {
@@ -16,23 +15,6 @@ class ShopApp extends Component {
     userId: '',
     searchInfo: '',
     currentCategory: ''
-  }
-  menuUser(){
-    
-    if(this.state.userName!=='' && this.state.userId!==''){
-      return(
-      <div>
-        {this.state.username}
-      </div>
-      );
-    }else{
-      return(
-      <div>
-        <button>Zaloguj się</button>
-      </div>
-      );
-    }
-    
   }
   onGetCategory(category){
     this.setState({currentCategory: category});
@@ -80,6 +62,7 @@ function App() {
           <Route path='/find/:itemName' component={ShopApp}/>
           <Route path='/item/:itemId' component={AnnouncementScreen}/>
           <Route path='/login' component={LoginScreen}/>
+          <Route path='/register' component={RegisterScreen}/>
         </Router>
       </div>
     </div>

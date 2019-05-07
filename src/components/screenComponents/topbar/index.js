@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../../../images/logo.PNG';
 import styled from 'styled-components';
 import SearchBar from './searchBar';
 import UserMenuBar from './userMenuBar';
-import { Link } from 'react-router-dom';
+import Logo from './logo';
 
 const Nav = styled.nav`
     display: flex;
@@ -11,10 +10,6 @@ const Nav = styled.nav`
     align-items: center;
     border: 1px solid red;
     padding: 10px;
-`
-
-const Img = styled.img`
-    width: 300px;
 `
 
 const Search = styled.div`
@@ -30,7 +25,7 @@ export default class TopBar extends Component {
         return(
             <div>
                 <Nav>
-                    <Link to='/'><Img src={logo} alt="logo"/></Link>
+                    <Logo/>
                     <Search><SearchBar/></Search>
                     <User><UserMenuBar userName={this.props.userName}/></User>
                 </Nav>
